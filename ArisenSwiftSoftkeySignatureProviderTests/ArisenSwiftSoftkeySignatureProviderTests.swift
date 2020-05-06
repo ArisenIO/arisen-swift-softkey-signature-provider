@@ -1,17 +1,17 @@
 //
-//  EosioSwiftSoftkeySignatureProviderTests.swift
-//  EosioSwiftSoftkeySignatureProviderTests
+//  ArisenSwiftSoftkeySignatureProviderTests.swift
+//  ArisenSwiftSoftkeySignatureProviderTests
 //
 //  Created by Farid Rahmani on 3/14/19.
 // Copyright (c) 2017-2019 block.one and its contributors. All rights reserved.
 //
 
 import XCTest
-import EosioSwift
-import EosioSwiftEcc
-@testable import EosioSwiftSoftkeySignatureProvider
+import ArisenSwift
+import ArisenSwiftEcc
+@testable import ArisenSwiftSoftkeySignatureProvider
 
-class EosioSwiftSoftkeySignatureProviderTests: XCTestCase {
+class ArisenSwiftSoftkeySignatureProviderTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,19 +23,19 @@ class EosioSwiftSoftkeySignatureProviderTests: XCTestCase {
     let privateKeyString = "PVT_K1_5KVdxcnxCmcfAd5Vod3FBuHoXDjwgdSiQRzEow8qXsMZNEX8h9a"
     let publicKeyString = "PUB_K1_7dRrMFULdLCgfNkeMdn94Wr19G4pHN87tDekRzbkMDKXrmQBVu"
     func test_init_withValidPrivateKeys_shouldSucceed() {
-        XCTAssertNoThrow(try EosioSoftkeySignatureProvider(privateKeys: [privateKeyString]))
+        XCTAssertNoThrow(try ArisenSoftkeySignatureProvider(privateKeys: [privateKeyString]))
     }
 
     func test_init_withInvalidPrivateKeys_shouldThrowAnError() {
-        XCTAssertThrowsError(try EosioSoftkeySignatureProvider(privateKeys: ["no valid key", privateKeyString]))
+        XCTAssertThrowsError(try ArisenSoftkeySignatureProvider(privateKeys: ["no valid key", privateKeyString]))
     }
 
     func test_init_withUnsupportedPrivateKeys_shouldThrowAnError() {
-        XCTAssertThrowsError(try EosioSoftkeySignatureProvider(privateKeys: ["5vK9n5mLcCXGfw3mhQ42ttedQNPksJ5GktnqBTrgvWuEMSbu3RL4"]))
+        XCTAssertThrowsError(try ArisenSoftkeySignatureProvider(privateKeys: ["5vK9n5mLcCXGfw3mhQ42ttedQNPksJ5GktnqBTrgvWuEMSbu3RL4"]))
     }
 
     func test_getAvailableKeys_shouldReturnCorrectPublicKeys() {
-        guard let signProvider = try? EosioSoftkeySignatureProvider(privateKeys: [privateKeyString]) else {
+        guard let signProvider = try? ArisenSoftkeySignatureProvider(privateKeys: [privateKeyString]) else {
             XCTFail("Failed test_getAvailableKeys_shouldReturnCorrectPublicKeys signProvider.")
             return
         }
@@ -52,7 +52,7 @@ class EosioSwiftSoftkeySignatureProviderTests: XCTestCase {
     func test_signTransaction_shouldSetSignedTransactionPropertyInResponseObject() {
         let trRequest = createSignatureRequest(transactionString: "some transaction")
         do {
-            let signProvider = try EosioSoftkeySignatureProvider(privateKeys: [privateKeyString])
+            let signProvider = try ArisenSoftkeySignatureProvider(privateKeys: [privateKeyString])
             signProvider.signTransaction(request: trRequest) { (response) in
                 XCTAssertNotNil(response.signedTransaction)
             }
@@ -65,7 +65,7 @@ class EosioSwiftSoftkeySignatureProviderTests: XCTestCase {
 
         do {
             let fakeChainId = "aa"
-            let signProvider = try EosioSoftkeySignatureProvider(privateKeys: [privateKeyString])
+            let signProvider = try ArisenSoftkeySignatureProvider(privateKeys: [privateKeyString])
             let serializedTransaction = "some transaction".data(using: .utf8)!
 
             var signReq = createSignatureRequest(transactionString: "some transaction")
@@ -79,16 +79,16 @@ class EosioSwiftSoftkeySignatureProviderTests: XCTestCase {
                     return
                 }
                 let zeros = Data(repeating: 0, count: 32)
-                guard let publicKey = try? self.recoverPublicKey(signature: Data(eosioSignature: signature), message: fakeChainIdData + serializedTransaction + zeros) else {
+                guard let publicKey = try? self.recoverPublicKey(signature: Data(arisenSignature: signature), message: fakeChainIdData + serializedTransaction + zeros) else {
                     XCTFail("Could not recover public key.")
                     return
                 }
-                print(publicKey.toCompressedPublicKey!.toEosioK1PublicKey)
-                XCTAssertEqual(self.publicKeyString, publicKey.toCompressedPublicKey!.toEosioK1PublicKey)
+                print(publicKey.toCompressedPublicKey!.toArisenK1PublicKey)
+                XCTAssertEqual(self.publicKeyString, publicKey.toCompressedPublicKey!.toArisenK1PublicKey)
             }
 
         } catch {
-            print(error.eosioError.reason)
+            print(error.arisenError.reason)
             XCTFail("Failed test_signTransaction_shouldSignTransactionCorrectly().")
         }
     }
@@ -101,9 +101,9 @@ class EosioSwiftSoftkeySignatureProviderTests: XCTestCase {
         return recoveredPubKey
     }
 
-    func createSignatureRequest(transactionString: String) -> EosioTransactionSignatureRequest {
+    func createSignatureRequest(transactionString: String) -> ArisenTransactionSignatureRequest {
         let serializedTransaction = transactionString.data(using: .utf8)!
-        var transactionSignReq = EosioTransactionSignatureRequest()
+        var transactionSignReq = ArisenTransactionSignatureRequest()
         transactionSignReq.serializedTransaction = serializedTransaction
         return transactionSignReq
     }

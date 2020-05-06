@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint EosioSwiftSoftkeySignatureProvider.podspec' to ensure this is a
+# Be sure to run `pod lib lint ArisenSwiftSoftkeySignatureProvider.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -7,10 +7,10 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'EosioSwiftSoftkeySignatureProvider'
+  s.name             = 'ArisenSwiftSoftkeySignatureProvider'
   s.version          = '0.2.1'
-  s.summary          = 'Experimental Software Key Signature Provider for Eosio SDK for Swift.'
-  s.homepage         = 'https://github.com/EOSIO/eosio-swift-softkey-signature-provider'
+  s.summary          = 'Experimental Software Key Signature Provider for Arisen SDK for Swift.'
+  s.homepage         = 'https://github.com/ARISEN/arisen-swift-softkey-signature-provider'
   s.license          = { :type => 'MIT', :text => <<-LICENSE
                            Copyright (c) 2017-2019 block.one and its contributors.  All rights reserved.
                          LICENSE
@@ -23,13 +23,13 @@ Pod::Spec.new do |s|
                          'Paul Kim' => 'paul.kim@block.one',
                          'Steve McCoole' => 'steve.mccoole@objectpartners.com',
                          'Ben Martell' => 'ben.martell@objectpartners.com' }
-  s.source           = { :git => 'https://github.com/EOSIO/eosio-swift-softkey-signature-provider.git', :tag => "v" + s.version.to_s }
+  s.source           = { :git => 'https://github.com/ARISEN/arisen-swift-softkey-signature-provider.git', :tag => "v" + s.version.to_s }
 
   s.swift_version         = '5.0'
   s.ios.deployment_target = '11.0'
 
-  s.source_files =  'EosioSwiftSoftkeySignatureProvider/**/*.{c,h,m,cpp,hpp}',
-                    'EosioSwiftSoftkeySignatureProvider/**/*.swift'
+  s.source_files =  'ArisenSwiftSoftkeySignatureProvider/**/*.{c,h,m,cpp,hpp}',
+                    'ArisenSwiftSoftkeySignatureProvider/**/*.swift'
 
   s.libraries = "c++"
   s.pod_target_xcconfig = { 'CLANG_CXX_LANGUAGE_STANDARD' => 'gnu++17',
@@ -39,6 +39,6 @@ Pod::Spec.new do |s|
                             'SWIFT_COMPILATION_MODE' => 'wholemodule',
                             'ENABLE_BITCODE' => 'YES' }
 
-  s.ios.dependency 'EosioSwiftEcc', '~> 0.2.1'
-  s.ios.dependency 'EosioSwift', '~> 0.2.1'
+  s.ios.dependency 'ArisenSwiftEcc', '~> 0.2.1'
+  s.ios.dependency 'ArisenSwift', '~> 0.2.1'
 end
