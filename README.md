@@ -1,4 +1,4 @@
-![Swift Logo](https://github.com/Arisen/Arisen-swift-softkey-signature-provider/raw/master/img/swift-logo.png)
+![Swift Logo](https://raw.githubusercontent.com/ArisenIO/arisen-swift-softkey-signature-provider/master/img/swift-logo.png)
 # Arisen SDK for Swift: Softkey Signature Provider ![Arisen Alpha](https://img.shields.io/badge/Arisen-Alpha-blue.svg)
 
 [![Software License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/Arisen/Arisen-swift/blob/master/LICENSE)
