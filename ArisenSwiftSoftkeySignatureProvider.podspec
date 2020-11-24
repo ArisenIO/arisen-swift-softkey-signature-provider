@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ArisenSwiftSoftkeySignatureProvider'
-  s.version          = '0.2.1'
+  s.version          = '0.0.1'
   s.summary          = 'Experimental Software Key Signature Provider for Arisen SDK for Swift.'
   s.homepage         = 'https://github.com/ARISEN/arisen-swift-softkey-signature-provider'
   s.license          = { :type => 'MIT', :text => <<-LICENSE

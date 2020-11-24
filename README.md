@@ -5,9 +5,9 @@
 [![Swift 5.0](https://img.shields.io/badge/Language-Swift_5.0-orange.svg)](https://swift.org)
 ![](https://img.shields.io/badge/Deployment%20Target-iOS%2011-blue.svg)
 
-Softkey Signature Provider is an example pluggable signature provider for [Arisen SDK for Swift](https://github.com/Arisen/Arisen-swift). It allows for signing transactions using in-memory K1 keys.
+Softkey Signature Provider is an example pluggable signature provider for [Arisen SDK for Swift](https://github.com/Arisenio/Arisen-swift). It allows for signing transactions using in-memory K1 keys.
 
-**Important:** Softkey Signature Provider stores keys in memory and is therefore not secure. It should only be used for development purposes. In production, we strongly recommend using a signature provider that interfaces with a secure vault, authenticator or wallet, such as the [Arisen SDK for Swift: Vault Signature Provider](https://github.com/Arisen/Arisen-swift-vault-signature-provider).
+**Important:** Softkey Signature Provider stores keys in memory and is therefore not secure. It should only be used for development purposes. In production, we strongly recommend using a signature provider that interfaces with a secure vault, authenticator or wallet, such as the [Arisen SDK for Swift: Vault Signature Provider](https://github.com/Arisenio/Arisen-swift-vault-signature-provider).
 
 *All product and company names are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.*
 
@@ -25,12 +25,12 @@ Softkey Signature Provider is an example pluggable signature provider for [Arise
 
 ## About Signature Providers
 
-The Signature Provider abstraction is arguably the most useful of all of the [Arisen SDK for Swift](https://github.com/Arisen/Arisen-swift) providers. It is responsible for:
+The Signature Provider abstraction is arguably the most useful of all of the [Arisen SDK for Swift](https://github.com/Arisenio/Arisen-swift) providers. It is responsible for:
 
 * finding out what keys are available for signing (`getAvailableKeys`), and
 * requesting and obtaining transaction signatures with a subset of the available keys (`signTransaction`).
 
-By simply switching out the signature provider on a transaction, signature requests can be routed any number of ways. Need software signing? [Configure the `ArisenTransaction`](https://github.com/Arisen/Arisen-swift#basic-usage) with this signature provider. Need a signature from keys in the platform's Keychain or Secure Enclave? Take a look at the [Vault Signature Provider](https://github.com/Arisen/Arisen-swift-vault-signature-provider). Need signatures from a wallet on the user's device? A signature provider can do that too!
+By simply switching out the signature provider on a transaction, signature requests can be routed any number of ways. Need software signing? [Configure the `ArisenTransaction`](https://github.com/Arisenio/Arisen-swift#basic-usage) with this signature provider. Need a signature from keys in the platform's Keychain or Secure Enclave? Take a look at the [Vault Signature Provider](https://github.com/Arisenio/Arisen-swift-vault-signature-provider). Need signatures from a wallet on the user's device? A signature provider can do that too!
 
 All signature providers must conform to the [`ArisenSignatureProviderProtocol`](https://github.com/Arisen/Arisen-swift/blob/master/ArisenSwift/ArisenSignatureProviderProtocol/ArisenSignatureProviderProtocol.swift) Protocol.
 
@@ -42,7 +42,7 @@ All signature providers must conform to the [`ArisenSignatureProviderProtocol`](
 
 ## Installation
 
-Softkey Signature Provider is intended to be used in conjunction with [Arisen SDK for Swift](https://github.com/Arisen/Arisen-swift) as a provider plugin.
+Softkey Signature Provider is intended to be used in conjunction with [Arisen SDK for Swift](https://github.com/Arisenio/Arisen-swift) as a provider plugin.
 
 To use Softkey Signature Provider with Arisen SDK for Swift in your app, add the following pods to your [Podfile](https://guides.cocoapods.org/syntax/podfile.html):
 
@@ -53,13 +53,13 @@ target "Your Target" do
   pod "ArisenSwift", "~> 0.2.1" # Arisen SDK for Swift core library
   pod "ArisenSwiftSoftkeySignatureProvider", "~> 0.2.1" # pod for this library
   # add other providers for Arisen SDK for Swift
-  pod "ArisenSwiftAbieosSerializationProvider", "~> 0.2.1" # serialization provider
+  pod "ArisenSwiftAbirsnSerializationProvider", "~> 0.2.1" # serialization provider
 
 ```
 
 Then run `pod install`.
 
-Now Softkey Signature Provider is ready for use within Arisen SDK for Swift according to the [Arisen SDK for Swift Basic Usage instructions](https://github.com/Arisen/Arisen-swift/tree/master#basic-usage).
+Now Softkey Signature Provider is ready for use within Arisen SDK for Swift according to the [Arisen SDK for Swift Basic Usage instructions](https://github.com/Arisenio/Arisen-swift/tree/master#basic-usage).
 
 ## Direct Usage
 
@@ -85,11 +85,11 @@ signProvider.signTransaction(request: signRequest) { (response) in
 
 ## Documentation
 
-Please refer to the generated code documentation at https://Arisen.github.io/Arisen-swift-softkey-signature-provider or by cloning this repo and opening the `docs/index.html` file in your browser.
+Please refer to the generated code documentation at https://arisenio.github.io/arisen-swift-softkey-signature-provider or by cloning this repo and opening the `docs/index.html` file in your browser.
 
 ## iOS Example App
 
-If you'd like to see the Arisen SDK for Swift: Softkey Signature Provider in action, check out our open source [iOS Example App](https://github.com/Arisen/Arisen-swift-ios-example-app)--a working application that fetches an account's token balance and pushes a transfer action.
+If you'd like to see the Arisen SDK for Swift: Softkey Signature Provider in action, check out our open source [iOS Example App](https://github.com/Arisenio/Arisen-swift-ios-example-app)--a working application that fetches an account's token balance and pushes a transfer action.
 
 ## Library Methods
 
